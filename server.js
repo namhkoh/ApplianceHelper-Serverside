@@ -17,7 +17,7 @@ app.post('/postdata', (req, res) => {
 }); 
 
 app.get('/postdata',function(req,res){
-    res.send('Hello World');
+    res.send('Appliance Helper test');
 });
 
 app.listen(3000, function (req,res){
