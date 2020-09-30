@@ -16,9 +16,9 @@ app.post('/postdata', (req, res) => {
 	}); 
 }); 
 
-app.get('/postdata',function(req,res){
-    res.send('Appliance Helper test');
-});
+// app.get('/postdata',function(req,res){
+//     res.send('Appliance Helper test');
+// });
 
 app.listen(3001, function (req,res){
     console.log('Running...');
