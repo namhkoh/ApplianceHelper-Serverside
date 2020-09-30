@@ -20,6 +20,6 @@ app.get('/postdata',function(req,res){
     res.send('Appliance Helper test');
 });
 
-app.listen(3030, function (req,res){
+app.listen(3000, function (req,res){
     console.log('Running...');
 });
