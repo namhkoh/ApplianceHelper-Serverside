@@ -1,77 +1,17 @@
-// var express = require("express");
-// var app = express();
-// var myParser = require("body-parser");
-
-// app.use(myParser.urlencoded({ extended: true }));
-// app.post("/sendData", function (request, response) {
-//   console.log(request.User); 
-// });
-
-// app.get("/sendData", function (req, res) {
-//   // res.send('Appliance Helper test');
-//   var data = req.User; // your data
-//   req.addListener("User", function () {
-//     console.log("from android :" + data);
-//   });
-// });
-
-// app.listen(3030, function (req, res) {
-//   console.log("Running...");
-// });
-
-var express = require('express'); 
-var app = express(); 
-  
-const bodyParser = require('body-parser'); 
-  
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true })); 
-  
-app.post('/postdata', (req, res) => { 
-	var data = req.body.data; // your data 
-	console.log(data); 
-    // do something with that data (write to a DB, for instance) 
-	res.status(200).json({ 
-		message: "JSON Data received successfully" 
-	}); 
-}); 
-
-app.get("/postdata/:users", function (req, res) {
-  // res.send('Appliance Helper test');
-  var data = req.User; // your data
-  req.addListener("User", function () {
-    console.log("from android :" + data);
-  });
+var express = require("express")
+var db = require("../ApplianceHelper-Serverside/db/data")
+// Set up the express app
+const app = express();
+// get all todos
+app.get('/api/v1/todos', (req, res) => {
+  res.status(200).send({
+    success: 'true',
+    message: 'userData retrieved successfully',
+    userData: db
+  })
 });
+const PORT = 3030;
 
-app.listen(3030, function (req, res) {
-  console.log("Running...");
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`)
 });
-
-
-/**
- * // Post files
-app.post(
-  "/upload",
-  multer({
-    storage: storage
-  }).single('upload'), function(req, res) {
-    console.log(req.file);
-    console.log(req.body);
-    res.redirect("/uploads/" + req.file.filename);
-    console.log(req.file.filename);
-    return res.status(200).end();
-  });
-
-app.get('/uploads/:upload', function (req, res){
-  file = req.params.upload;
-  console.log(req.params.upload);
-  var img = fs.readFileSync(__dirname + "/uploads/" + file);
-  res.writeHead(200, {'Content-Type': 'image/png' });
-  res.end(img, 'binary');
-
-});
-
-
-app.listen(3030);
- */
