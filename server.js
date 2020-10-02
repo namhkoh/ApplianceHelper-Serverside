@@ -18,6 +18,7 @@ app.post("/postdata", (req, res) => {
 
 app.get("/postdata", function (req, res) {
   // res.send('Appliance Helper test');
+  var data = req.body.data; // your data
   req.addListener("data", function (chunk) {
     data += chunk;
   });
