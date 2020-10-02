@@ -1,17 +1,62 @@
-var express = require("express")
-var db = require("../ApplianceHelper-Serverside/db/data")
-// Set up the express app
+var express = require("express");
+var db = require("../ApplianceHelper-Serverside/db/data");
+var bodyParser = require("body-parser");
+
 const app = express();
-// get all todos
-app.get('/api/v1/todos', (req, res) => {
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get("/api/v1/todos", (req, res) => {
   res.status(200).send({
-    success: 'true',
-    message: 'userData retrieved successfully',
-    userData: db
-  })
+    success: "true",
+    message: "userData retrieved successfully",
+    userData: db,
+  });
 });
 const PORT = 3030;
 
+app.post('/api/v1/todos', (req, res) => {
+  if(!req.body.testId) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'invalid testId'
+    });
+  } else if(!req.body.name) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'invalid name'
+    });
+  }
+ const userData = {
+   id: db.length + 1,
+   title: req.body.testId,
+   description: req.body.name
+ }
+ db.push(userData);
+ return res.status(201).send({
+   success: 'true',
+   message: 'users added successfully',
+   userData
+ })
+});
+
+app.get('/api/v1/todos/:testId', (req, res) => {
+  const testId = parseInt(req.params.testId, 10);
+  db.map((userData) => {
+    if (userData.testId === testId) {
+      return res.status(200).send({
+        success: 'true',
+        message: 'userData retrieved successfully',
+        userData,
+      });
+    } 
+});
+ return res.status(404).send({
+   success: 'false',
+   message: 'userData does not exist',
+  });
+});
+
 app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`)
+  console.log(`server running on port ${PORT}`);
 });
