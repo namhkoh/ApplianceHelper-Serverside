@@ -16,8 +16,6 @@ app.get("/api/v1/todos", (req, res) => {
 const PORT = 3030;
 
 app.post("/api/v1/todos", (req, res) => {
-  console.log("reached! 1")
-  console.log(req);
   if (!req.body.testId) {
     return res.status(400).send({
       success: "false",
@@ -72,9 +70,6 @@ app.post("/api/v1/todos", (req, res) => {
       message: "invalid score value",
     });
   }
-
-  console.log("reached! 2");
-
   const userData = {
     testId: req.body.testId,
     name: req.body.name,
@@ -86,9 +81,7 @@ app.post("/api/v1/todos", (req, res) => {
     userConsent: req.body.userConsent,
     feedback: req.body.feedback,
   };
-  console.log(req.body.testId);
   console.log(userData);
-  console.log(db);
 
   db.push(userData);
   return res.status(201).send({
