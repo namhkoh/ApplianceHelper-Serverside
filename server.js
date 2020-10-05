@@ -80,9 +80,8 @@ app.post("/api/v1/todos", (req, res) => {
     endSession: req.body.endSession,
     totalTime: req.body.totalTime,
     userConsent: req.body.userConsent,
-    feedback: req.body.feedback
+    feedback: req.body.feedback,
   };
-  db.push(JSON.parse(userData));
   return res.status(201).send({
     success: "true",
     message: "users added successfully",
