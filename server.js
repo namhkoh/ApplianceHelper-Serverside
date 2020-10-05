@@ -82,7 +82,10 @@ app.post("/api/v1/todos", (req, res) => {
     userConsent: req.body.userConsent,
     feedback: req.body.feedback,
   };
-  db.push(JSON.parse(userData.body));
+  console.log(req.body.testId);
+  console.log(userData);
+  console.log(db);
+  db.push(userData);
   return res.status(201).send({
     success: "true",
     message: "users added successfully",
