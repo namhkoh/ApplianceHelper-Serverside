@@ -3,7 +3,7 @@ var db = require("../ApplianceHelper-Serverside/db/data");
 var bodyParser = require("body-parser");
 
 const app = express();
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/api/v1/todos", (req, res) => {
