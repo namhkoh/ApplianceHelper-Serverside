@@ -16,60 +16,65 @@ app.get("/api/v1/todos", (req, res) => {
 const PORT = 3030;
 
 app.post("/api/v1/todos", (req, res) => {
-  if (!req.body.testId) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid testId",
-    });
-  } 
-  else if (!req.body.name) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid name",
-    });
-  } 
-  else if (!req.body.buttonsCorrect) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid int value",
-    });
-  } 
-  else if (!req.body.buttonsIncorrect) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid int value",
-    });
-  } 
-  else if (!req.body.startSession) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid epoch time",
-    });
-  } 
-  else if (!req.body.endSession) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid epoch time",
-    });
-  } 
-  else if (!req.body.totalTime) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid epoch time",
-    });
-  } 
-  else if (!req.body.userConsent) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid boolean",
-    });
-  } 
-  else if (!req.body.feedback) {
-    return res.status(400).send({
-      success: "false",
-      message: "invalid score value",
-    });
+  try{
+    if (!req.body.testId) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid testId",
+      });
+    } 
+    else if (!req.body.name) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid name",
+      });
+    } 
+    else if (!req.body.buttonsCorrect) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid int value",
+      });
+    } 
+    else if (!req.body.buttonsIncorrect) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid int value",
+      });
+    } 
+    else if (!req.body.startSession) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid epoch time",
+      });
+    } 
+    else if (!req.body.endSession) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid epoch time",
+      });
+    } 
+    else if (!req.body.totalTime) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid epoch time",
+      });
+    } 
+    else if (!req.body.userConsent) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid boolean",
+      });
+    } 
+    else if (!req.body.feedback) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid score value",
+      });
+    }
+  } catch(e){
+    console.log("ERROR " + e);
   }
+  
   const userData = {
     testId: req.body.testId,
     name: req.body.name,
