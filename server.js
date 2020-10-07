@@ -16,6 +16,7 @@ app.get("/api/v1/todos", (req, res) => {
 const PORT = 3030;
 
 app.post("/api/v1/todos", (req, res) => {
+  console.log("incoming...",req);
   try{
     if (!req.body.testId) {
       return res.status(400).send({
