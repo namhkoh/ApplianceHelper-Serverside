@@ -5,7 +5,6 @@ var bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-console.log("hello world")
 
 app.get("/api/v1/todos", (req, res) => {
   res.status(200).send({
@@ -17,7 +16,7 @@ app.get("/api/v1/todos", (req, res) => {
 const PORT = 3030;
 
 app.post("/api/v1/todos", (req, res) => {
-  // console.log("hello world")
+  console.log("hello world")
   console.log("incoming...",req);
   try{
     if (!req.body.testId) {
