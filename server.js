@@ -91,7 +91,7 @@ app.post("/api/v1/todos", (req, res) => {
   };
   console.log(userData);
 
-  db.push(JSON.parse(userData));
+  db.push(userData);
   return res.status(201).send({
     success: "true",
     message: "users added successfully",
