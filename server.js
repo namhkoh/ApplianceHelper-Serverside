@@ -94,6 +94,24 @@ app.post("/api/v1/todos", (req, res) => {
   };
   console.log(userData);
 
+  // var writer = fs.createWriteStream('storedData/output.txt');
+  // writer.write(JSON.stringify(userData));
+  // fs.appendFile('storedData/output.txt', index+ "\n", function (err) {
+  //   if (err) console.log(err);
+  // });
+  fs.appendFile("storedData/output.json", JSON.stringify(userData), function (err) {
+    if (err) throw err;
+      console.log('Saved!');
+  });
+
+//   fs.writeFile("storedData/output.json", JSON.stringify(userData), (err) => {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     };
+//     console.log("File has been created");
+// });
+
   db.push(userData);
   return res.status(201).send({
     success: "true",
