@@ -10,10 +10,19 @@
   "author": "namhkoh",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "file-system": "^2.2.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.11.5",
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namhkoh/ApplianceHelper-Serverside.git"
+  },
+  "bugs": {
+    "url": "https://github.com/namhkoh/ApplianceHelper-Serverside/issues"
+  },
+  "homepage": "https://github.com/namhkoh/ApplianceHelper-Serverside#readme"
 }

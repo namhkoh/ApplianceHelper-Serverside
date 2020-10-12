@@ -1,10 +1,16 @@
 var express = require("express");
 var db = require("../ApplianceHelper-Serverside/db/data");
 var bodyParser = require("body-parser");
+const fs = require('fs')
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+const dirPath = path.join(__dirname, '/storedData');
+fs.mkdirSync(dirPath); 
+
 
 app.get("/api/v1/todos", (req, res) => {
   res.status(200).send({
