@@ -9,8 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const dirPath = path.join(__dirname, '/storedData');
-if (fs.existsSync(dirPath)) {
-  return;
+const dir = './storedData'
+if (fs.existsSync(dir)) {
+  console.log("Directory exits");
 } else {
   fs.mkdirSync(dirPath); 
 }
