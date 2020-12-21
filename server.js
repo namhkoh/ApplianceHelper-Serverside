@@ -9,8 +9,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const dirPath = path.join(__dirname, '/storedData');
-fs.mkdirSync(dirPath); 
-
+if (fs.existsSync(dirPath)) {
+  return;
+} else {
+  fs.mkdirSync(dirPath); 
+}
 
 app.get("/api/v1/todos", (req, res) => {
   res.status(200).send({
