@@ -80,6 +80,11 @@ app.post("/api/v1/todos", (req, res) => {
         success: "false",
         message: "invalid score value",
       });
+    } else if (!req.body.questions) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid questions",
+      });
     }
   } catch(e){
     console.log("ERROR " + e);
@@ -95,6 +100,7 @@ app.post("/api/v1/todos", (req, res) => {
     totalTime: req.body.totalTime,
     userConsent: req.body.userConsent,
     feedback: req.body.feedback,
+    questions: req.body.questions
   };
   console.log(userData);
 
