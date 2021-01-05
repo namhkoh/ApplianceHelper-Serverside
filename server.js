@@ -17,10 +17,12 @@ if (fs.existsSync(dir)) {
 }
 
 app.get("/api/v1/todos", (req, res) => {
+  let rawDataOutput = fs.readFileSync('storedData/output.json');
+  let parsed = JSON.parse(rawDataOutput)
   res.status(200).send({
     success: "true",
     message: "userData retrieved successfully",
-    userData: db,
+    userData: parsed,
   });
 });
 const PORT = 3030;
@@ -44,13 +46,25 @@ app.post("/api/v1/todos", (req, res) => {
         success: "false",
         message: "invalid int value",
       });
+    }
+    else if (!req.body.totalCorrect) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid int value",
+      });
     } 
     else if (!req.body.buttonsIncorrect) {
       return res.status(400).send({
         success: "false",
         message: "invalid int value",
       });
-    } 
+    }
+    else if (!req.body.totalIncorrect) {
+      return res.status(400).send({
+        success: "false",
+        message: "invalid int value",
+      });
+    }  
     else if (!req.body.startSession) {
       return res.status(400).send({
         success: "false",
@@ -94,7 +108,9 @@ app.post("/api/v1/todos", (req, res) => {
     testId: req.body.testId,
     name: req.body.name,
     buttonsCorrect: req.body.buttonsCorrect,
+    totalCorrect: req.body.totalCorrect,
     buttonsIncorrect: req.body.buttonsIncorrect,
+    totalIncorrect: req.body.totalIncorrect,
     startSession: req.body.startSession,
     endSession: req.body.endSession,
     totalTime: req.body.totalTime,
@@ -118,7 +134,7 @@ app.post("/api/v1/todos", (req, res) => {
 });
 
 app.get("/api/v1/todos/:testId", (req, res) => {
-  const testId = parseInt(req.params.testId, 10);
+  const testId = parseInt(req.params.testId, 1);
   db.map((userData) => {
     if (userData.testId === testId) {
       return res.status(200).send({
