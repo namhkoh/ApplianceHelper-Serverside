@@ -47,24 +47,12 @@ app.post("/api/v1/todos", (req, res) => {
         message: "invalid int value",
       });
     }
-    else if (!req.body.totalCorrect) {
-      return res.status(400).send({
-        success: "false",
-        message: "invalid int value",
-      });
-    } 
     else if (!req.body.buttonsIncorrect) {
       return res.status(400).send({
         success: "false",
         message: "invalid int value",
       });
-    }
-    else if (!req.body.totalIncorrect) {
-      return res.status(400).send({
-        success: "false",
-        message: "invalid int value",
-      });
-    }  
+    } 
     else if (!req.body.startSession) {
       return res.status(400).send({
         success: "false",
@@ -107,10 +95,8 @@ app.post("/api/v1/todos", (req, res) => {
   const userData = {
     testId: req.body.testId,
     name: req.body.name,
-    buttonsCorrect: req.body.buttonsCorrect,
-    totalCorrect: req.body.totalCorrect,
-    buttonsIncorrect: req.body.buttonsIncorrect,
-    totalIncorrect: req.body.totalIncorrect,
+    microwave: req.body.buttonsCorrect,
+    oven: req.body.buttonsIncorrect,
     startSession: req.body.startSession,
     endSession: req.body.endSession,
     totalTime: req.body.totalTime,
