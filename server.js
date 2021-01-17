@@ -69,7 +69,7 @@ app.post("/api/v1/todos", (req, res) => {
     } else if (!req.body.userSequence) {
       return res.status(400).send({
         success: "false",
-        message: "invalid questions",
+        message: "invalid userSequence",
       });
     }
     const userData = {

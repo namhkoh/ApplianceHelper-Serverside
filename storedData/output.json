@@ -1,0 +1,23 @@
+{
+    "testId": "user1",
+    "name": "name",
+    "startSession": "epochTime",
+    "endSession": "epochTime",
+    "totalTime": "totalTime",
+    "userConsent": "boolean",
+    "feedback": "very good!",
+    "userSequence": {
+        "Task1": {
+            "userQuestion": "question",
+            "epochTime1": "buttonPress",
+            "epochTime2": "buttonPress",
+            "epochTime3": "buttonPress"
+        },
+        "Task2": {
+            "userQuestion": "question",
+            "epochTime1": "buttonPress",
+            "epochTime2": "buttonPress",
+            "epochTime3": "buttonPress"
+        }
+    }
+}{"testId":"userID","name":"name","startSession":"epochTime","endSession":"epochTime","totalTime":"totalTime","userConsent":"boolean","feedback":"very good!","userSequence":{"epochTime1":{"currentActivity":"ActivityName","buttonPress":"buttonType","questionAsked":"null"},"epochTime2":{"currentActivity":"ActivityName","buttonPress":"buttonType","questionAsked":"How do I cook fasd"},"epochTime3":{"currentActivity":"ActivityName","buttonPress":"buttonType","questionAsked":"How do I cook fries in the oven?"},"epochTime4":{"currentActivity":"ActivityName","buttonPress":"buttonType","questionAsked":"null"}}}
