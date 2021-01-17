@@ -16,7 +16,7 @@ if (fs.existsSync(dir)) {
   fs.mkdirSync(dirPath); 
 }
 
-app.get("/api/v1/todos", (req, res) => {
+app.get("/api/v1/getData", (req, res) => {
   let rawDataOutput = fs.readFileSync('storedData/output.json');
   let parsed = JSON.parse(rawDataOutput)
   res.status(200).send({
@@ -39,18 +39,6 @@ app.post("/api/v1/todos", (req, res) => {
       return res.status(400).send({
         success: "false",
         message: "invalid name",
-      });
-    } 
-    else if (!req.body.buttonsCorrect) {
-      return res.status(400).send({
-        success: "false",
-        message: "invalid int value",
-      });
-    }
-    else if (!req.body.buttonsIncorrect) {
-      return res.status(400).send({
-        success: "false",
-        message: "invalid int value",
       });
     } 
     else if (!req.body.startSession) {
@@ -82,7 +70,7 @@ app.post("/api/v1/todos", (req, res) => {
         success: "false",
         message: "invalid score value",
       });
-    } else if (!req.body.questions) {
+    } else if (!req.body.userSequence) {
       return res.status(400).send({
         success: "false",
         message: "invalid questions",
@@ -95,14 +83,12 @@ app.post("/api/v1/todos", (req, res) => {
   const userData = {
     testId: req.body.testId,
     name: req.body.name,
-    microwave: req.body.buttonsCorrect,
-    oven: req.body.buttonsIncorrect,
     startSession: req.body.startSession,
     endSession: req.body.endSession,
     totalTime: req.body.totalTime,
     userConsent: req.body.userConsent,
     feedback: req.body.feedback,
-    questions: req.body.questions
+    questions: req.body.userSequence
   };
   console.log(userData);
 
