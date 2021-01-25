@@ -84,9 +84,7 @@ app.post("/api/v1/todos", (req, res) => {
     };
     console.log(userData);
     db.push(userData);
-    fs.appendFile(
-      "storedData/output.json",
-      JSON.stringify(userData),
+    fs.appendFile("storedData/output.json",JSON.stringify([userData]),
       function (err) {
         if (err) throw err;
         console.log("Saved!");
